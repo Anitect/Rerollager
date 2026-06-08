@@ -112,4 +112,4 @@ The plugin jar lands in `build/libs`. Run `./gradlew runServer` to start a test 
 
 ## License
 
-MIT. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
+MIT. See [LICENSE](LICENSE).

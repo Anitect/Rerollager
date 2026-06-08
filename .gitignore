@@ -16,3 +16,9 @@ run/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local development docs (kept on disk, not published)
+/CONTEXT.md
+/CHANGELOG.md
+/NOTICE.md
+/docs/
