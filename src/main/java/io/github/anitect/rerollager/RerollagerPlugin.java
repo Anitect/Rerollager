@@ -9,12 +9,17 @@ import io.github.anitect.rerollager.lock.LockService;
 import io.github.anitect.rerollager.reroll.RerollService;
 import io.github.anitect.rerollager.reroll.RerollStrategy;
 import io.github.anitect.rerollager.reroll.nms.NmsRerollStrategy;
+import io.github.anitect.rerollager.update.UpdateChecker;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 
 public final class RerollagerPlugin extends JavaPlugin {
+
+    // bStats service id for Rerollager, from https://bstats.org/ (set once the plugin is registered).
+    private static final int BSTATS_PLUGIN_ID = 0;
 
     private volatile PluginConfig config;
     private LockService lockService;
@@ -43,8 +48,12 @@ public final class RerollagerPlugin extends JavaPlugin {
                         List.of("rrl"),
                         new RerollagerCommand(this)));
 
-        // TODO(v1): bStats metrics behind config.metricsEnabled().
-        // TODO(v1): Modrinth update check behind config.updateCheck().
+        if (config.metricsEnabled() && BSTATS_PLUGIN_ID > 0) {
+            new Metrics(this, BSTATS_PLUGIN_ID);
+        }
+        if (config.updateCheck()) {
+            new UpdateChecker(this).checkAsync();
+        }
 
         getSLF4JLogger().info("Enabled. Sneak + right-click a professional villager to reroll its trades.");
     }
