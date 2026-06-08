@@ -30,6 +30,13 @@ tasks {
         options.encoding = "UTF-8"
     }
 
+    // The default `jar` task writes the same Rerollager-<version>.jar as shadowJar
+    // (classifier ""), so leaving it enabled lets an un-shaded jar race and clobber
+    // the shaded one in build/libs. Disable it so only the shaded jar is ever produced.
+    jar {
+        enabled = false
+    }
+
     shadowJar {
         // Replace the default jar so build/libs holds a single, shaded plugin jar.
         archiveClassifier.set("")
