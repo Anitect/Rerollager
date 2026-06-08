@@ -1,0 +1,5 @@
+# Normalize line endings; keep wrapper scripts in their native form.
+* text=auto eol=lf
+*.bat text eol=crlf
+gradlew text eol=lf
+*.jar binary

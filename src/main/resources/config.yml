@@ -1,0 +1,88 @@
+# Rerollager configuration.
+# Trigger: sneak + right-click a professional villager to reroll its trades.
+
+trigger:
+  # Require this item in the main hand to trigger a reroll.
+  # Leave empty ("") to trigger with an EMPTY hand instead (the default).
+  # Example: "EMERALD", "CLOCK", "NAME_TAG".
+  require-item: ""
+  # If require-item is set, also consume one of it as part of the cost.
+  # Ignored when require-item is empty.
+  consume-required-item: false
+
+cooldown:
+  # Per (player, villager): the same player must wait this long before rerolling
+  # the SAME villager again. Stored on the villager itself (survives restarts,
+  # removed when the villager dies). Players with rerollager.bypass.cooldown skip it.
+  enabled: true
+  seconds: 30
+
+lock:
+  # Let players lock a villager's trades so they can't be accidentally rerolled.
+  # Sneak + right-click the villager while holding the item below to toggle lock <-> unlock.
+  # The item MUST be different from trigger.require-item (otherwise the lock gesture wins and
+  # rerolls via that item never fire). A locked villager refuses rerolls but still trades normally.
+  # Players need rerollager.lock to toggle. rerollager.bypass.lock lets a player reroll through a
+  # lock, but it is NOT granted by default (not even to ops) so locks stop accidental rerolls for
+  # everyone; assign it explicitly if you want an override role.
+  enabled: true
+  item: "TRIPWIRE_HOOK"
+
+cost:
+  # Charge a price per reroll. Players with rerollager.bypass.cost skip it.
+  enabled: false
+  items:
+    # Items consumed from the player's inventory per reroll. One entry per line:
+    #   MATERIAL: amount
+    # Example:
+    #   EMERALD: 3
+    {}
+  xp:
+    enabled: false
+    # "levels" charges whole experience levels; "points" charges raw experience points.
+    mode: levels
+    amount: 5
+  scaling:
+    # Multiply the cost based on the villager's level (1 = Novice .. 5 = Master).
+    by-level: false
+    # One multiplier per level, Novice -> Master.
+    level-multipliers: [1.0, 1.5, 2.0, 3.0, 5.0]
+    # Multiply the cost based on the villager's profession.
+    by-profession: false
+    # Per-profession multipliers (lowercase profession names). Unlisted = 1.0.
+    profession-multipliers:
+      librarian: 2.0
+
+messages:
+  # MiniMessage formatting. <time> is replaced with the remaining cooldown.
+  # Leave a message empty ("") to suppress it.
+  not-eligible: ""
+  on-cooldown: "<red>You must wait <time> before rerolling this villager again.</red>"
+  cannot-afford: "<red>You can't afford to reroll this villager.</red>"
+  success: "<green>Trades rerolled.</green>"
+  locked: "<green>Trades locked.</green>"
+  unlocked: "<yellow>Trades unlocked.</yellow>"
+  reroll-denied-locked: "<red>This villager's trades are locked. Unlock them first.</red>"
+
+feedback:
+  sound:
+    # Play a sound at the villager on a successful reroll.
+    enabled: true
+    key: "minecraft:entity.villager.yes"
+    volume: 1.0
+    pitch: 1.0
+  lock-sound:
+    # Play a sound at the villager when its trades are locked / unlocked.
+    enabled: true
+    lock-key: "minecraft:block.chain.place"
+    unlock-key: "minecraft:block.chain.break"
+    volume: 1.0
+    pitch: 1.0
+
+updates:
+  # Check Modrinth for a newer Rerollager build on startup and log a notice to ops.
+  check-on-startup: true
+
+metrics:
+  # Anonymous usage statistics via bStats. See https://bstats.org/
+  enabled: true

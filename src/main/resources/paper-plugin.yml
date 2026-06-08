@@ -1,0 +1,32 @@
+name: Rerollager
+version: '${version}'
+main: io.github.anitect.rerollager.RerollagerPlugin
+api-version: '26.1.2'
+author: Anitect
+description: Reroll a professional villager's trades in place, gated by cooldown and/or cost.
+website: https://github.com/Anitect/Rerollager
+# We rely on Paper-only internals (paperweight Mojang mappings); not a Bukkit/Spigot plugin.
+folia-supported: false
+# Commands are registered via the Brigadier API (paper-plugins do not declare commands here).
+permissions:
+  # Nothing is granted to regular players automatically — the server owner decides who gets what
+  # (e.g. via LuckPerms). Action perms default to op (only owner/ops out of the box); every bypass
+  # defaults to false (must be assigned explicitly, not even granted to ops).
+  rerollager.use:
+    description: Reroll a villager's trades. Not granted to regular players by default; grant it to whoever should be able to reroll.
+    default: op
+  rerollager.lock:
+    description: Toggle a villager's trade lock. Not granted to regular players by default; grant it to whoever should be able to lock/unlock.
+    default: op
+  rerollager.bypass.lock:
+    description: Reroll even when a villager's trades are locked. Not granted by default (a lock should stop everyone, including ops); assign explicitly to an override role.
+    default: false
+  rerollager.bypass.cooldown:
+    description: Reroll without waiting for the cooldown. Not granted by default; assign explicitly.
+    default: false
+  rerollager.bypass.cost:
+    description: Reroll without paying the cost. Not granted by default; assign explicitly.
+    default: false
+  rerollager.admin:
+    description: Use /rerollager admin subcommands (reload). Op-only by default.
+    default: op
