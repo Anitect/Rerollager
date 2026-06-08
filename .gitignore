@@ -22,3 +22,6 @@ Thumbs.db
 /CHANGELOG.md
 /NOTICE.md
 /docs/
+
+# Icon source/exports (uploaded to Modrinth, not needed in the repo)
+/rerollager_icon*.png
