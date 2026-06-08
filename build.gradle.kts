@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "io.github.anitect"
-version = "0.1.0-SNAPSHOT"
+version = "1.0.0"
 description = "Reroll a professional villager's trades in place, gated by cooldown and/or cost."
 
 java {
