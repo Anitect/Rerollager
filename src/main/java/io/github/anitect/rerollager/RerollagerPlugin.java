@@ -18,8 +18,8 @@ import java.util.List;
 
 public final class RerollagerPlugin extends JavaPlugin {
 
-    // bStats service id for Rerollager, from https://bstats.org/ (set once the plugin is registered).
-    private static final int BSTATS_PLUGIN_ID = 0;
+    // bStats service id for Rerollager (https://bstats.org/plugin/bukkit/Rerollager/31879).
+    private static final int BSTATS_PLUGIN_ID = 31879;
 
     private volatile PluginConfig config;
     private LockService lockService;
