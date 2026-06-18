@@ -41,7 +41,7 @@ jobs:
             paper
             purpur
           game-versions: |
-            26.1.2
+            26.2
           java: |
             25
 

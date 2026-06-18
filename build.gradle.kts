@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "io.github.anitect"
-version = "1.0.0"
+version = "1.0.1"
 description = "Reroll a professional villager's trades in place, gated by cooldown and/or cost."
 
 java {
@@ -19,7 +19,7 @@ java {
 
 dependencies {
     // Brings the full Paper API + Mojang-mapped server internals for the target version.
-    paperweight.paperDevBundle("26.1.2.build.+")
+    paperweight.paperDevBundle("26.2.build.+")
     // Anonymous metrics; shaded + relocated into the jar (see shadowJar below).
     implementation("org.bstats:bstats-bukkit:3.1.0")
 }
@@ -49,7 +49,7 @@ tasks {
     }
 
     runServer {
-        minecraftVersion("26.1.2")
+        minecraftVersion("26.2")
         jvmArgs("-Xmx2G")
         pluginJars(shadowJar.flatMap { it.archiveFile })
     }

@@ -2,7 +2,7 @@
 
 A lightweight Paper plugin for rerolling villager trades. Sneak and right click a villager to refresh its trades on the spot, with no breaking and replacing the workstation. Keep rerolling until you get the enchanted book, tool, or price you want.
 
-Made for the latest Minecraft (Paper 26.1.2, Java 25). No dependencies. MIT licensed.
+Made for the latest Minecraft (Paper 26.2, Java 25). No dependencies. MIT licensed.
 
 ## What it does
 
@@ -99,7 +99,7 @@ See [config.yml](src/main/resources/config.yml) for the full list of options.
 
 ## Requirements
 
-- Paper or a Paper fork such as Purpur, for Minecraft 26.1.2
+- Paper or a Paper fork such as Purpur, for Minecraft 26.2
 - Java 25
 
 ## Building

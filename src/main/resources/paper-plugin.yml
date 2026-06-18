@@ -1,7 +1,7 @@
 name: Rerollager
 version: '${version}'
 main: io.github.anitect.rerollager.RerollagerPlugin
-api-version: '26.1.2'
+api-version: '26.2'
 author: Anitect
 description: Reroll a professional villager's trades in place, gated by cooldown and/or cost.
 website: https://github.com/Anitect/Rerollager
